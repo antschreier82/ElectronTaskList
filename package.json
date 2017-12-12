@@ -1,0 +1,22 @@
+{
+  "name": "electrontasklist",
+  "version": "1.0.0",
+  "description": "Task list app using electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antschreier82/ElectronTaskList.git"
+  },
+  "author": "Anthony Schreier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antschreier82/ElectronTaskList/issues"
+  },
+  "homepage": "https://github.com/antschreier82/ElectronTaskList#readme",
+  "devDependencies": {
+    "electron": "^1.7.9"
+  }
+}
