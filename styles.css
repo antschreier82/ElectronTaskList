@@ -1,3 +1,16 @@
 h1 {
-    color: blue;
+    color: rgba(97, 214, 51, 0.753);
+    text-shadow: 2px 2px 3px grey;
+    font-size: 3em;
+}
+
+li {
+    color: grey;
+    text-shadow: 1px 1px 2px green;
+    font-size: 1.5em; 
+}
+
+.buttonHold {
+    padding: 10px;
+    
 }

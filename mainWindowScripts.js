@@ -3,6 +3,7 @@ const dialog = electron.dialog;
 const fs = require('fs');
 const ipc = electron.ipcRenderer;
 
+
 ipc.on('addList', (evt, item) =>{
     const ul = document.getElementById('taskList');
     const li = document.createElement('li');
@@ -29,11 +30,11 @@ document.getElementById("saveF").addEventListener('click', function() {
     ipc.send('saveFile')
 })
 
-
+/*
 function saveFile() {
     dialog.showSaveDialog((filename) =>{
         if(filename === undefined) {
-            alert("You didnt enter a file name");
+            alert("You didn't enter a file name!");
             return;
         }
 
@@ -48,7 +49,7 @@ function saveFile() {
         })
     })
 }
-
+*/
 ipc.on('writeFile', (evt, theFile) => {
     
     const contents = document.getElementById('taskList').innerHTML
@@ -58,7 +59,7 @@ ipc.on('writeFile', (evt, theFile) => {
             console.log(err)
         }
 
-        alert("file Saved")
+        alert("File Saved")
     })
 })
 
@@ -71,7 +72,7 @@ ipc.on('openFile', (evt,theFile) => {
 
     fs.readFile(theFile, 'utf-8', (err, data) =>{
         if(err) {
-            console.log("error retreiving data")
+            console.log("Error Retreiving Data")
         }
 
         const outputList = document.getElementById('taskList')
@@ -81,7 +82,7 @@ ipc.on('openFile', (evt,theFile) => {
 })
 
 ipc.on('unOpened', (evt, arg)=> {
-    alert("file not opened")
+    alert("File Not Opened")
 })
 /*
 function readFile(filePath) {

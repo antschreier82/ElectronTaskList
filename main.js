@@ -42,6 +42,7 @@ function createAddWindow(){
     
 }
 
+//Custom Menu Template
 const template = [
     {
         label: "File",
@@ -92,12 +93,15 @@ const template = [
     }
 ]
 
+
+//ipc add item
+
 ipc.on('add-Item',(evt, item) =>{
     const theItem = item
     mainWindow.webContents.send('addList', theItem)
-    console.log(theItem)
 })
 
+//ipc save file
 ipc.on('saveFile', (evt, arg) => {
      const filename = dialog.showSaveDialog((filename) => {
         
@@ -108,7 +112,7 @@ ipc.on('saveFile', (evt, arg) => {
         mainWindow.webContents.send('writeFile', filename)
     })
 })
-
+//open file function for the menu item
 function openFile() {
     dialog.showOpenDialog((filenames) => {
         
