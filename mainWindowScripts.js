@@ -29,7 +29,7 @@ document.getElementById("saveF").addEventListener('click', function() {
     ipc.send('saveFile')
 })
 
-/*
+
 function saveFile() {
     dialog.showSaveDialog((filename) =>{
         if(filename === undefined) {
@@ -48,7 +48,7 @@ function saveFile() {
         })
     })
 }
-*/
+
 ipc.on('writeFile', (evt, theFile) => {
     
     const contents = document.getElementById('taskList').innerHTML
