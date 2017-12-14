@@ -1,8 +1,10 @@
 const electron = require('electron')
 const app = electron.app
+const dialog = electron.dialog
 const BrowserWindow  = electron.BrowserWindow
 const Menu = electron.Menu
 const ipc = electron.ipcMain
+
 
 app.on('ready', function(){
     mainWindow = new BrowserWindow();
@@ -45,7 +47,10 @@ const template = [
         label: "File",
         
         submenu: [ {
-            label: "Open"
+            label: "Open",
+            click() {
+                openFile();
+            }
         }   
         ]
     },
@@ -92,3 +97,25 @@ ipc.on('add-Item',(evt, item) =>{
     mainWindow.webContents.send('addList', theItem)
     console.log(theItem)
 })
+
+ipc.on('saveFile', (evt, arg) => {
+     const filename = dialog.showSaveDialog((filename) => {
+        
+        if(filename === undefined) {
+            mainWindow.webContents.send('unsaved')
+        }
+
+        mainWindow.webContents.send('writeFile', filename)
+    })
+})
+
+function openFile() {
+    dialog.showOpenDialog((filenames) => {
+        
+        if (filenames === undefined) {
+            mainWindow.webContents.send('unOpened')
+        }
+
+        mainWindow.webContents.send('openFile', filenames[0])
+    })
+}
